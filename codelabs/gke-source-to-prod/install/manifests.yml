@@ -1,7 +1,7 @@
 apiVersion: v1
 kind: Namespace
 metadata:
-  name: spinnaker
+  name: default
 
 ---
 
@@ -24,7 +24,7 @@ apiVersion: apps/v1beta1
 kind: Deployment
 metadata:
   name: spin-halyard
-  namespace: spinnaker
+  namespace: default
   labels:
     app: spin
     stack: halyard
@@ -80,7 +80,7 @@ apiVersion: v1
 kind: Service
 metadata:
   name: spin-halyard
-  namespace: spinnaker
+  namespace: default
 spec:
   ports:
     - port: 8064
@@ -96,7 +96,7 @@ apiVersion: v1
 kind: ConfigMap
 metadata:
   name: halconfig
-  namespace: spinnaker
+  namespace: default
 data:
   igor.yml: |
     enabled: false
@@ -287,7 +287,7 @@ apiVersion: batch/v1
 kind: Job
 metadata:
   name: hal-deploy-apply
-  namespace: spinnaker
+  namespace: default
   labels:
     app: job
     stack: hal-deploy
